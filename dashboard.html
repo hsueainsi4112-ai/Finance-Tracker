@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finance Tracker - Dashboard</title>
+    <script src="js/theme.js"></script>
+    <link rel="stylesheet" href="css/dashboard.css">
+    <!-- Google Font (optional) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <button class="hamburger-btn" id="hamburgerBtn" onclick="toggleSidebar()">
+        <span></span><span></span><span></span>
+    </button>
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
+    <div class="dashboard-layout">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <div class="profile">
+                <div class="avatar">N</div>
+                <div>
+                    <h3 id="userName">User</h3>
+                    <span>International student</span>
+                </div>
+            </div>
+
+            <nav class="side-menu">
+                <p class="menu-title">Overview</p>
+                <a href="#" class="active">Dashboard</a>
+                <a href="expenses.html">Expenses</a>
+                <a href="income_page.html">Income</a>
+                <a href="budgets.html">Budgets</a>
+                <a href="costguide.html">Cost Guide</a>
+
+                <p class="menu-title">Account</p>
+                <a href="settings.html">Settings</a>
+                <a href="login.html">Sign out</a>
+            </nav>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-panel">
+
+            <!-- TOP BAR -->
+            <header class="main-header">
+                <div>
+                    <h1>Hello, <span id="greetName"></span> 👋</h1>
+                    <p class="subtitle">Here is your finance summary for this month.</p>
+                </div>
+            </header>
+
+            <!-- AI SMART TIP -->
+            <div id="ai-tip-panel" class="ai-tip-panel" style="display:none;">
+                <span class="ai-tip-icon">🤖</span>
+                <div class="ai-tip-content">
+                    <strong>AI Insight</strong>
+                    <span id="ai-tip-text"></span>
+                </div>
+            </div>
+
+            <!-- TOP SUMMARY + MAIN CARD ROW -->
+            <section class="top-row">
+
+                <!-- BIG CARD -->
+                <div class="big-card">
+                    <div>
+                        <p class="muted">Finance summary · <span id="greetMonth"></span></p>
+                    </div>
+
+                    <div>
+                        <p class="big-card-amount-label">Current Balance</p>
+                        <div class="big-card-amount">£<span id="balance-amount">0.00</span></div>
+                    </div>
+
+                    <div class="big-card-actions">
+                        <button class="primary-btn"><a href="income.html">+ Add Income</a></button>
+                        <button class="secondary-btn"><a href="expense.html">+ Add Expense</a></button>
+                    </div>
+                </div>
+
+                <!-- SUMMARY CARDS -->
+                <div class="summary-grid">
+                    <div class="summary-card income-card">
+                        <div class="card-icon income-icon">💰</div>
+                        <p class="label">Total Income</p>
+                        <h3>£<span id="income-amount">0.00</span></h3>
+                    </div>
+
+                    <div class="summary-card expense-card">
+                        <div class="card-icon expense-icon">💸</div>
+                        <p class="label">Total Expenses</p>
+                        <h3>£<span id="expense-amount">0.00</span></h3>
+                    </div>
+
+                    <div class="summary-card budget-card">
+                        <div class="card-icon budget-icon">📊</div>
+                        <p class="label">Budget Used</p>
+                        <h3><span id="budget-used">0%</span></h3>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width:0%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="summary-card savings-card">
+                        <div class="card-icon savings-icon">🏦</div>
+                        <p class="label">Savings Rate</p>
+                        <h3 id="savings-rate">0%</h3>
+                        <p class="savings-label" id="savings-label">of income saved</p>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- BOTTOM ROW: CHART + RIGHT PANEL -->
+            <section class="bottom-row">
+
+                <!-- CHART AREA -->
+                <div class="chart-card">
+                    <div class="section-header">
+                        <h3 id="chartTitle">Spending Flow</h3>
+                        <div class="chart-controls">
+                            <div class="chart-toggle">
+                                <button class="toggle-btn active" id="btnFlow" onclick="switchChart('flow')">Spending Flow</button>
+                                <button class="toggle-btn" id="btnDonut" onclick="switchChart('donut')">By Category</button>
+                            </div>
+                            <select id="flowRangeSelect">
+                                <option value="weekly">Weekly</option>
+                                <option value="monthly">Monthly</option>
+                                <option value="yearly">Yearly</option>
+                            </select>
+                        </div>
+                    </div>
+                    <canvas id="spendingChart"></canvas>
+                    <canvas id="categoryChart" style="display:none; max-height:300px;"></canvas>
+                </div>
+
+                <!-- RIGHT COLUMN: TRANSACTIONS & QUICK SUMMARY -->
+                <div class="right-column">
+
+                    <div class="transactions-card">
+                        <div class="section-header">
+                            <h3>Recent Transactions</h3>
+                            <select id="txFilter">
+                            <option value="this_month">This month</option>
+                            <option value="last_month">Last month</option>
+                        </select>
+                        </div>
+
+                        <ul class="transaction-list" id="transaction-list">
+                            <!-- JS will fill dummy items -->
+                        </ul>
+                    </div>
+
+                    <div class="small-summary-card">
+                        <h3>This month’s budget</h3>
+                        <p class="muted">Total set: <strong>£<span id="budget-total">0.00</span></strong></p>
+                        <p class="muted">Remaining: <strong id="budget-remaining">£0.00</strong></p>
+                    </div>
+
+                    <div class="small-summary-card top-spend-card" id="top-spend-card" style="display:none;">
+                        <p class="label">🏆 Top spending category</p>
+                        <h3 id="top-cat-name">—</h3>
+                        <p class="muted">£<span id="top-cat-amount">0.00</span> this month</p>
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script src="js/avatar.js"></script>
+    <script src="js/notif-bell.js"></script>
+    <script src="js/sidebar.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Finance Tracker - Budgets</title>
+    <script src="js/theme.js"></script>
+    <link rel="stylesheet" href="css/dashboard.css" />
+    <link rel="stylesheet" href="css/budgets.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+    <button class="hamburger-btn" id="hamburgerBtn" onclick="toggleSidebar()">
+        <span></span><span></span><span></span>
+    </button>
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
+    <div class="dashboard-layout">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <div class="profile">
+                <div class="avatar">N</div>
+                <div>
+                    <h3 id="userName">User</h3>
+                    <span>International student</span>
+                </div>
+            </div>
+
+            <nav class="side-menu">
+                <p class="menu-title">Overview</p>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="expenses.html">Expenses</a>
+                <a href="income_page.html">Income</a>
+                <a href="budgets.html" class="active">Budgets</a>
+                <a href="costguide.html">Cost Guide</a>
+
+                <p class="menu-title">Account</p>
+                <a href="settings.html">Settings</a>
+                <a href="login.html">Sign out</a>
+            </nav>
+        </aside>
+
+        <!-- MAIN PANEL -->
+        <main class="main-panel">
+
+            <header class="main-header">
+                <div>
+                    <h1>Budgets</h1>
+                    <p class="subtitle">Set monthly limits and avoid overspending.</p>
+                </div>
+                <div class="month-nav">
+                    <button class="month-nav-btn" onclick="changeMonth(-1)">&#8249;</button>
+                    <span id="month-label">Loading...</span>
+                    <button class="month-nav-btn" onclick="changeMonth(1)">&#8250;</button>
+                </div>
+            </header>
+
+            <section class="top-row">
+                <div class="big-card">
+                    <h2>Set a Budget</h2>
+                    <form class="budget-form" onsubmit="addBudget(event)">
+                        <div>
+                            <label for="budgetCategory">Category</label>
+                            <select id="budgetCategory" required>
+              <option value="">Select category</option>
+              <option value="Food">Food</option>
+              <option value="Transport">Transport</option>
+              <option value="Accommodation">Accommodation</option>
+              <option value="Tuition Fee">Tuition Fee</option>
+              <option value="Shopping">Shopping</option>
+              <option value="Trip">Trip</option>
+              <option value="Other">Other</option>
+            </select>
+                        </div>
+                        <div>
+                            <label for="budgetAmount">Monthly limit (£)</label>
+                            <input type="number" id="budgetAmount" min="0" step="0.01" required />
+                        </div>
+                        <button type="submit" class="primary-btn">Save Budget</button>
+                    </form>
+                    <button class="ai-suggest-btn" onclick="getAIRecommendations()">
+                        🤖 AI Suggest Budgets
+                    </button>
+                    <button class="trip-plan-btn" onclick="openTripPlanner()">
+                        ✈️ Plan a Trip
+                    </button>
+                </div>
+                <div class="budget-summary">
+                    <div class="summary-box">
+                        <p><b>Total Budget Set</b></p>
+                        <h3>£ <span id="total-budget">0.00</span></h3>
+                    </div>
+
+                    <div class="summary-box">
+                        <p><b>Total Spent</b></p>
+                        <h3>£ <span id="total-spent">0.00</span></h3>
+                    </div>
+
+                    <div class="summary-box">
+                        <p><b>Total Remaining</b></p>
+                        <h3>£ <span id="total-remaining">0.00</span></h3>
+                    </div>
+                </div>
+            </section>
+
+            <!-- AI RECOMMENDATIONS PANEL -->
+            <section id="ai-panel" class="ai-panel" style="display:none;">
+                <div class="ai-panel-header">
+                    <div class="ai-icon">🤖</div>
+                    <div>
+                        <h3>AI Budget Recommendations</h3>
+                        <p id="ai-subtitle">Based on your last 3 months of spending — with a 10% buffer added</p>
+                    </div>
+                    <button class="ai-apply-all-btn" onclick="applyAllRecommendations()">✅ Apply All</button>
+                    <button class="ai-close-btn" onclick="closeAIPanel()">✕</button>
+                </div>
+                <div id="ai-cards" class="ai-cards">
+                    <!-- filled by JS -->
+                </div>
+            </section>
+
+            <!-- ✈️ TRIP PLANNER PANEL -->
+            <section id="trip-panel" class="trip-panel" style="display:none;">
+                <div class="trip-panel-header">
+                    <div class="ai-icon">✈️</div>
+                    <div>
+                        <h3>AI Trip Budget Planner</h3>
+                        <p>Enter your trip details — AI will estimate how much you need to save</p>
+                    </div>
+                    <button class="ai-close-btn" onclick="closeTripPlanner()">✕</button>
+                </div>
+
+                <!-- INPUT FORM -->
+                <div class="trip-form-row">
+                    <div class="trip-form-group">
+                        <label>From (Your Location)</label>
+                        <input type="text" id="tripFromCity" placeholder="e.g. Bristol, London…" />
+                    </div>
+                    <div class="trip-form-group">
+                        <label>Destination</label>
+                        <input type="text" id="tripDestination" placeholder="e.g. Paris, Dubai, Tokyo…" />
+                    </div>
+                    <div class="trip-form-group">
+                        <label>Days</label>
+                        <input type="number" id="tripDays" min="1" max="30" value="3" />
+                    </div>
+                    <div class="trip-form-group">
+                        <label>Travellers</label>
+                        <input type="number" id="tripTravellers" min="1" max="10" value="1" />
+                    </div>
+                    <div class="trip-form-group">
+                        <label>Travel Style</label>
+                        <select id="tripStyle">
+                            <option value="0">🎒 Budget</option>
+                            <option value="1" selected>🌟 Mid-range</option>
+                            <option value="2">💎 Luxury</option>
+                        </select>
+                    </div>
+                    <div class="trip-form-group trip-form-btn-wrap">
+                        <button class="ai-suggest-btn" onclick="generateTripPlan()" id="tripGenBtn">
+                            🤖 Generate Plan
+                        </button>
+                    </div>
+                </div>
+
+                <!-- RESULTS (hidden until generated) -->
+                <div id="trip-results" style="display:none;">
+                    <div class="trip-result-header">
+                        <div>
+                            <h3 id="trip-title">Trip to Paris</h3>
+                            <p id="trip-meta" class="trip-meta">3 days · 1 traveller · Mid-range</p>
+                        </div>
+                        <div class="trip-total-box">
+                            <span class="trip-total-label">Total Estimate</span>
+                            <span class="trip-total-amount" id="trip-total">£0</span>
+                        </div>
+                    </div>
+
+                    <div class="trip-breakdown" id="trip-breakdown"></div>
+
+                    <div class="trip-chart-wrap">
+                        <canvas id="tripChart"></canvas>
+                    </div>
+
+                    <div class="trip-tips" id="trip-tips"></div>
+
+                    <div class="trip-actions">
+                        <button class="ai-apply-all-btn" onclick="saveTripBudget()">
+                            💾 Set as Trip Budget
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="bottom-row">
+                <div class="chart-card" style="flex: 2;">
+                    <div class="section-header">
+                        <h3 id="table-heading">Budget Overview</h3>
+                    </div>
+                    <div class="budget-table-wrap">
+                    <table class="budget-table">
+                        <thead>
+                            <tr>
+                                <th>Category</th>
+                                <th>Limit (£)</th>
+                                <th>Spent (£)</th>
+                                <th>Remaining (£)</th>
+                                <th>Progress</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="budget-table-body">
+                            <!-- filled by JS -->
+                        </tbody>
+                    </table>
+                    </div>
+                </div>
+                <!-- PIE (RIGHT) -->
+                <div class="chart-card" style="flex: 1;">
+                    <div class="section-header">
+                        <h3>Limit vs Spent</h3>
+                    </div>
+
+                    <div class="pie-wrap">
+                        <canvas id="budgetPie"></canvas>
+                    </div>
+                </div>
+
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script src="js/budgets.js"></script>
+<script src="js/avatar.js"></script>
+    <script src="js/notif-bell.js"></script>
+    <script src="js/sidebar.js"></script>
+</body>
+
+</html>

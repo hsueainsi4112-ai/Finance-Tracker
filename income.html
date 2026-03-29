@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Add Income | Finance Tracker</title>
+  <link rel="stylesheet" href="css/income.css" />
+</head>
+
+<body>
+  <div class="income-container">
+    <h2>Add Income</h2>
+
+    <form onsubmit="addIncome(event)">
+      <label>Amount (£)</label>
+      <input type="number" id="amount" step="0.01" required />
+
+      <label>Category</label>
+<select id="category" required>
+    <option value="">Select Category</option>
+    <option value="Salary">Salary</option>
+        <option value="Tuition Fee">Tuition Fee</option>
+        <option value="Acconmmodation">Accommodation</option>
+        <option value="Food">Food</option>
+        <option value="Trip">Trip</option>
+        <option value="Shopping">Shopping</option>
+        <option value="Transport">Transport</option>
+        <option value="Other">Other</option>
+        </select>
+
+
+      <label>Date</label>
+      <input type="date" id="date" required />
+
+      <label>Note (optional)</label>
+      <textarea id="note"></textarea>
+
+      <button type="submit" class="btn">Save Income</button>
+    </form>
+
+    <a href="dashboard.html" class="back">← Back to Dashboard</a>
+  </div>
+
+  <script src="js/income.js"></script>
+
+</body>
+</html>

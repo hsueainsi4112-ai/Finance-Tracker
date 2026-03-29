@@ -1,0 +1,30 @@
+.expense-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.expense-table th,
+.expense-table td {
+  padding: 11px 10px;
+  border-bottom: 1px solid #f3f4f6;
+  text-align: left;
+}
+
+.expense-table th {
+  background: #f9fafb;
+  font-size: 12px;
+  font-weight: 700;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.expense-table tr:hover td { background: #fafafa; }
+
+#expensePie {
+  max-width: 280px;
+  max-height: 280px;
+  margin: 20px auto;
+  display: block;
+}

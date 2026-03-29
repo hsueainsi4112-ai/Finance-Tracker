@@ -1,0 +1,557 @@
+/* ── BUDGET FORM ── */
+.budget-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+
+.budget-form label {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 5px;
+  display: block;
+  color: #9ca3af;
+}
+
+.budget-form input,
+.budget-form select {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.12);
+  font-size: 14px;
+  font-family: inherit;
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.budget-form input:focus,
+.budget-form select:focus { border-color: #a78bfa; }
+
+.budget-form select option { background: #1e293b; color: #fff; }
+
+.budget-form button {
+  grid-column: span 2;
+  justify-self: flex-start;
+  margin-top: 4px;
+  background: #fff;
+  color: #111827;
+  border: none;
+  padding: 9px 20px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: opacity 0.15s;
+}
+.budget-form button:hover { opacity: 0.88; }
+
+/* ── SUMMARY BOXES ── */
+.budget-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.summary-box {
+  background: #fff;
+  padding: 16px 18px;
+  border-radius: 14px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+
+.summary-box p { font-size: 13px; color: #6b7280; }
+.summary-box h3 { font-size: 20px; font-weight: 700; margin-top: 4px; }
+
+/* ── BUDGET TABLE ── */
+table.budget-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.budget-table th,
+.budget-table td {
+  padding: 11px 10px;
+  border-bottom: 1px solid #f3f4f6;
+  text-align: left;
+}
+
+.budget-table th {
+  background: #f9fafb;
+  font-size: 12px;
+  font-weight: 700;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.budget-table tr:hover td { background: #fafafa; }
+
+.status-ok     { color: #16a34a; font-weight: 700; }
+.status-warn   { color: #d97706; font-weight: 700; }
+.status-danger { color: #dc2626; font-weight: 700; }
+
+.pie-wrap {
+  height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#budgetPie {
+  width: 100% !important;
+  max-width: 100% !important;
+  max-height: 280px !important;
+}
+
+/* ── MONTH NAVIGATOR ── */
+.month-nav {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #fff;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 999px;
+  padding: 6px 16px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #111827;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+
+.month-nav-btn {
+  background: none;
+  border: none;
+  font-size: 22px;
+  color: #7b2eff;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0 4px;
+  transition: transform 0.15s;
+}
+.month-nav-btn:hover { transform: scale(1.25); }
+
+/* ── PROGRESS BAR ── */
+.progress-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 120px;
+}
+
+.progress-track {
+  flex: 1;
+  height: 8px;
+  background: #e5e7eb;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 0.4s ease;
+}
+
+.progress-fill.ok     { background: #16a34a; }
+.progress-fill.warn   { background: #d97706; }
+.progress-fill.danger { background: #dc2626; }
+
+.progress-pct {
+  font-size: 12px;
+  font-weight: 700;
+  min-width: 36px;
+  text-align: right;
+}
+.progress-pct.ok     { color: #16a34a; }
+.progress-pct.warn   { color: #d97706; }
+.progress-pct.danger { color: #dc2626; }
+
+/* ── AI SUGGEST BUTTON ── */
+.ai-suggest-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #7b2eff, #a855f7);
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  margin-top: 14px;
+  transition: transform 0.2s, box-shadow 0.2s, opacity 0.15s;
+}
+.ai-suggest-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(123, 46, 255, 0.45);
+}
+.ai-suggest-btn:disabled { opacity: 0.6; cursor: default; transform: none; box-shadow: none; }
+
+/* ── AI RECOMMENDATIONS PANEL ── */
+.ai-panel {
+  background: #fff;
+  border-radius: 16px;
+  padding: 24px 28px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 24px rgba(123, 46, 255, 0.10);
+  border: 1.5px solid rgba(123, 46, 255, 0.15);
+}
+
+.ai-panel-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.ai-icon {
+  font-size: 26px;
+  background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+  width: 50px;
+  height: 50px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.ai-panel-header h3 { font-size: 16px; font-weight: 700; margin-bottom: 2px; color: #111827; }
+.ai-panel-header p  { font-size: 12px; color: #6b7280; }
+
+.ai-apply-all-btn {
+  margin-left: auto;
+  background: #7b2eff;
+  color: #fff;
+  border: none;
+  padding: 9px 18px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s;
+}
+.ai-apply-all-btn:hover { background: #6420d4; }
+
+.ai-close-btn {
+  background: none;
+  border: none;
+  font-size: 18px;
+  color: #9ca3af;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: background 0.15s, color 0.15s;
+}
+.ai-close-btn:hover { background: #f3f4f6; color: #374151; }
+
+/* ── AI RECOMMENDATION CARDS ── */
+.ai-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(165px, 1fr));
+  gap: 14px;
+}
+
+.ai-card {
+  background: #faf5ff;
+  border: 1.5px solid #ede9fe;
+  border-radius: 14px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.ai-card-cat  { font-size: 14px; font-weight: 700; color: #7b2eff; }
+.ai-card-avg  { font-size: 12px; color: #6b7280; margin-top: 2px; }
+.ai-card-rec  { font-size: 13px; color: #111827; font-weight: 500; }
+.rec-amount   { color: #7b2eff; font-weight: 700; }
+
+.ai-apply-one-btn {
+  margin-top: 10px;
+  background: #7b2eff;
+  color: #fff;
+  border: none;
+  padding: 7px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  align-self: flex-start;
+  transition: background 0.15s;
+}
+.ai-apply-one-btn:hover { background: #6420d4; }
+
+/* ── TRIP PLAN BUTTON ── */
+.trip-plan-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #16a34a, #22c55e);
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  margin-top: 10px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.trip-plan-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(22, 163, 74, 0.4);
+}
+
+/* ── TRIP PLANNER PANEL ── */
+.trip-panel {
+  background: #fff;
+  border-radius: 16px;
+  padding: 24px 28px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 24px rgba(22, 163, 74, 0.10);
+  border: 1.5px solid rgba(22, 163, 74, 0.2);
+}
+
+.trip-panel-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+.trip-panel-header h3 { font-size: 16px; font-weight: 700; margin-bottom: 2px; color: #111827; }
+.trip-panel-header p  { font-size: 12px; color: #6b7280; }
+
+/* ── TRIP FORM ── */
+.trip-form-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  background: #f9fafb;
+  border-radius: 14px;
+  padding: 18px;
+  margin-bottom: 22px;
+  align-items: flex-end;
+}
+
+.trip-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+  min-width: 130px;
+}
+.trip-form-btn-wrap { justify-content: flex-end; }
+
+.trip-form-group label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.trip-form-group input,
+.trip-form-group select {
+  padding: 9px 12px;
+  border-radius: 8px;
+  border: 1.5px solid #e5e7eb;
+  font-size: 14px;
+  font-family: inherit;
+  background: #fff;
+  color: #111827;
+  outline: none;
+  transition: border-color 0.15s;
+}
+.trip-form-group input:focus,
+.trip-form-group select:focus { border-color: #7b2eff; }
+
+/* ── TRIP RESULTS HEADER ── */
+.trip-result-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.trip-result-header h3 { font-size: 20px; font-weight: 800; color: #111827; margin-bottom: 4px; }
+.trip-meta { font-size: 12px; color: #6b7280; }
+
+.trip-total-box {
+  background: linear-gradient(135deg, #7b2eff, #a855f7);
+  color: #fff;
+  border-radius: 14px;
+  padding: 14px 24px;
+  text-align: center;
+  min-width: 150px;
+}
+.trip-total-label  { display: block; font-size: 11px; font-weight: 600; opacity: 0.85; margin-bottom: 4px; }
+.trip-total-amount { font-size: 24px; font-weight: 800; }
+
+/* ── BREAKDOWN BARS ── */
+.trip-breakdown {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 22px;
+}
+.trip-breakdown-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.trip-cat-label {
+  min-width: 175px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+}
+.trip-bar-wrap {
+  flex: 1;
+  height: 10px;
+  background: #e5e7eb;
+  border-radius: 999px;
+  overflow: hidden;
+}
+.trip-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #7b2eff, #a855f7);
+  border-radius: 999px;
+  transition: width 0.5s ease;
+}
+.trip-amount {
+  min-width: 72px;
+  text-align: right;
+  font-size: 13px;
+  font-weight: 700;
+  color: #111827;
+}
+
+/* ── TRIP CHART ── */
+.trip-chart-wrap {
+  height: 220px;
+  margin-bottom: 22px;
+  position: relative;
+}
+
+/* ── AI TIPS ── */
+.trip-tips {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+.trip-tip-item {
+  background: #f0fdf4;
+  border: 1.5px solid #bbf7d0;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 13px;
+  color: #166534;
+  line-height: 1.5;
+}
+
+/* ── TRIP ACTIONS ── */
+.trip-actions { display: flex; gap: 10px; }
+
+/* ── RESPONSIVE (mobile) ── */
+@media (max-width: 768px) {
+  /* Header: stack title and month nav */
+  .main-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  /* Budget form: single column */
+  .budget-form {
+    grid-template-columns: 1fr;
+  }
+  .budget-form button {
+    grid-column: span 1;
+    width: 100%;
+    justify-self: stretch;
+  }
+
+  /* AI + Trip buttons: full width, stacked */
+  .ai-suggest-btn,
+  .trip-plan-btn {
+    width: 100%;
+    justify-content: center;
+    margin-top: 8px;
+  }
+
+  /* Budget layout: single column */
+  .budget-layout {
+    flex-direction: column;
+  }
+
+  /* Summary boxes: side by side in 2 cols */
+  .budget-summary {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .summary-box {
+    flex: 1 1 calc(50% - 8px);
+    min-width: 120px;
+  }
+
+  /* Budget table: make it scrollable */
+  .budget-table-wrap {
+    overflow-x: auto;
+  }
+  table.budget-table {
+    min-width: 480px;
+  }
+
+  /* Trip form: single column */
+  .trip-form-row {
+    flex-direction: column;
+  }
+  .trip-form-group {
+    min-width: unset;
+    width: 100%;
+  }
+
+  /* Trip actions: stack */
+  .trip-actions {
+    flex-direction: column;
+  }
+}
+
+/* ── TOAST NOTIFICATION ── */
+.ai-toast {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%) translateY(80px);
+  background: #111827;
+  color: #fff;
+  padding: 12px 26px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  opacity: 0;
+  transition: transform 0.3s, opacity 0.3s;
+  z-index: 9999;
+  pointer-events: none;
+  white-space: nowrap;
+}
+.ai-toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}

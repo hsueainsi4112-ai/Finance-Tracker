@@ -1,0 +1,136 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: #f3f4f6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.signup-container {
+  display: flex;
+  width: 940px;
+  max-width: 96vw;
+  background: #fff;
+  border-radius: 22px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.10);
+  overflow: hidden;
+}
+
+.signup-image {
+  flex: 1;
+  background: linear-gradient(145deg, #ede9fe, #ddd6fe);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+.signup-image img {
+  width: 80%;
+  max-width: 280px;
+  height: auto;
+}
+
+.signup-form {
+  flex: 1.2;
+  padding: 48px 48px 44px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow-y: auto;
+}
+
+.signup-form h2 {
+  font-size: 26px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 6px;
+}
+
+.subtitle {
+  color: #6b7280;
+  font-size: 14px;
+  margin-bottom: 24px;
+}
+
+label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 9px;
+  font-size: 14px;
+  font-family: inherit;
+  background: #fafafa;
+  outline: none;
+  margin-bottom: 14px;
+  transition: border-color 0.15s;
+}
+
+input:focus {
+  border-color: #7b2eff;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(123,46,255,0.08);
+}
+
+.terms {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 13px;
+  color: #6b7280;
+  margin-bottom: 20px;
+}
+
+.terms input[type="checkbox"] {
+  width: auto;
+  margin: 2px 0 0;
+  padding: 0;
+  border: none;
+  box-shadow: none;
+  flex-shrink: 0;
+}
+
+.terms a { color: #7b2eff; font-weight: 600; text-decoration: none; }
+.terms a:hover { text-decoration: underline; }
+
+.signup-btn {
+  width: 100%;
+  padding: 12px;
+  background: #7b2eff;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s;
+}
+.signup-btn:hover { background: #6420d4; }
+
+.login-link {
+  text-align: center;
+  margin-top: 16px;
+  font-size: 14px;
+  color: #6b7280;
+}
+.login-link a { color: #7b2eff; font-weight: 600; text-decoration: none; }
+.login-link a:hover { text-decoration: underline; }
+
+@media (max-width: 700px) {
+  .signup-image { display: none; }
+  .signup-form { padding: 40px 24px; }
+}

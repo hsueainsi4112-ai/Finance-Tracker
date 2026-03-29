@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finance Tracker</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="logo"><a href="#">FINANCE TRACKER</a></div>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#">Home</a></li>
+            <li><a href="#about">About us</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="login.html" class="btn">JOIN NOW</a></li>
+        </ul>
+
+        <!-- Mobile Menu Icon -->
+        <div class="menu-icon" onclick="toggleMenu()">
+            ☰
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-text">
+            <h1>Finance Tracker</h1>
+            <h3>Smart budgeting for international students</h3>
+            <p>Track your income, control expenses, and connect with other students in the UK.
+            </p>
+
+            <button class="primary-btn"><a href="login.html">Get Started</a></button>
+        </div>
+
+        <div class="hero-img">
+            <img src="images/main.png" alt="Hero Image">
+        </div>
+    </section>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById("navLinks").classList.toggle("active");
+        }
+    </script>
+
+<!-- About Us -->
+    <section id="about" class="about-section">
+
+    <div class="about-container">
+
+        <!-- LEFT SIDE TEXT -->
+        <div class="about-text">
+            <h2>Our Story</h2>
+
+            <p>
+                Finance Tracker was created to support international students who come to the UK and face
+                the challenge of managing their money for the first time. Many students struggle with high
+                living expenses, unfamiliar banking systems, and cultural differences in budgeting.
+            </p>
+
+            <p>
+                Our goal is to provide a simple, smart, and easy-to-use platform that helps students track
+                income, control daily expenses, and stay financially confident throughout their studies.
+            </p>
+
+            <p>
+                Over time, we aim to build a community where students can learn good money habits, share
+                experiences, and support each other in managing life in the UK.
+            </p>
+        </div>
+
+        <!-- RIGHT SIDE IMAGE -->
+        <div class="about-image">
+            <img src="images/about.png" alt="About illustration">
+        </div>
+
+    </div>
+
+    <div class="about-cards">
+
+        <div class="card">
+            <img src="icons/who.png" alt="Who we are" />
+            <h3>Who we are?</h3>
+            <p>
+                We are a student-focused platform built to help international students develop smart budgeting
+                habits and financial confidence while living in the UK.
+            </p>
+        </div>
+
+        <div class="card">
+            <img src="icons/what.png" alt="What we do" />
+            <h3>What we do?</h3>
+            <p>
+                We offer tools to track expenses, monitor spending patterns, set monthly budgets, and receive
+                helpful insights through charts and reports.
+            </p>
+        </div>
+
+        <div class="card">
+            <img src="icons/why.png" alt="Why choose us" />
+            <h3>Why choose us?</h3>
+            <p>
+                Our platform is designed specifically for international students — simple, visual, mobile-ready,
+                and tailored to real student needs in the UK.
+            </p>
+        </div>
+    </div>
+</section>
+<!-- Services -->
+<section id="features" class="services-section">
+
+    <h2>Our Features</h2>
+    <p class="service-intro">
+        We provide simple and powerful tools to help international students manage their finances,
+        stay organized, and build strong budgeting habits while studying in the UK.
+    </p>
+
+    <div class="service-cards">
+
+        <div class="service-card">
+            <img src="icons/expense.png" alt="Expense Tracking">
+            <h3>Expense Tracking</h3>
+            <p>
+                Record daily spending, categorize expenses, and keep track of your financial habits.
+                All your expenses in one clean and simple dashboard.
+            </p>
+        </div>
+
+        <div class="service-card">
+            <img src="icons/budget.png" alt="Budget Planning">
+            <h3>Budget Planning</h3>
+            <p>
+                Set monthly budgets for food, transport, rent, and bills. Receive alerts if you exceed
+                your planned budget to stay in control.
+            </p>
+        </div>
+
+        <div class="service-card">
+            <img src="icons/insight.png" alt="Reports & Insights">
+            <h3>Reports & Insights</h3>
+            <p>
+                View charts, spending patterns, and detailed reports that help you understand your
+                financial behavior and improve your budgeting.
+            </p>
+        </div>
+    </div>
+</section>
+<!-- Footer Section -->
+<footer class="footer">
+
+    <div class="footer-container">
+
+        <!-- Column 1 -->
+        <div class="footer-col">
+            <h3>Finance Tracker</h3>
+            <p>
+                Helping international students manage money, build budgeting habits, 
+                and stay financially confident while living in the UK.
+            </p>
+        </div>
+
+        <!-- Column 2 -->
+        <div class="footer-col">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#about">About us</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </div>
+
+        <!-- Column 3 -->
+        <div class="footer-col">
+            <h4>Contact</h4>
+            <ul>
+                <li>Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="bfcccacfcfd0cdcbffd9d6d1ded1dcdacbcddedcd4dacd91dcd0d2">[email&#160;protected]</a></li>
+                <li>Phone: +44 0000 000000</li>
+                <li>Location: Bristol, UK</li>
+            </ul>
+        </div>
+
+    </div>
+
+    <div 

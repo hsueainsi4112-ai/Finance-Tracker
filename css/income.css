@@ -1,0 +1,90 @@
+/* Add Expense / Add Income standalone form page */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: "Inter", system-ui, sans-serif;
+  background: #f3f4f6;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.expense-container,
+.income-container {
+  width: 100%;
+  max-width: 460px;
+  background: #fff;
+  border-radius: 18px;
+  padding: 36px 36px 32px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.09);
+}
+
+.expense-container h2,
+.income-container h2 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 24px;
+  color: #111827;
+}
+
+label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 5px;
+  margin-top: 14px;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 11px 14px;
+  font-size: 14px;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 9px;
+  outline: none;
+  background: #fafafa;
+  color: #111827;
+  font-family: inherit;
+  transition: border-color 0.15s;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: #7b2eff;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(123,46,255,0.08);
+}
+
+textarea { resize: vertical; min-height: 80px; }
+
+.btn {
+  width: 100%;
+  margin-top: 22px;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: opacity 0.15s;
+}
+
+.expense-container .btn { background: #7b2eff; color: #fff; }
+.income-container  .btn { background: #7b2eff; color: #fff; }
+.btn:hover { opacity: 0.88; }
+
+.back {
+  display: inline-block;
+  margin-top: 16px;
+  font-size: 13px;
+  color: #7b2eff;
+  text-decoration: none;
+  font-weight: 500;
+}
+.back:hover { text-decoration: underline; }

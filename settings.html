@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Finance Tracker - Settings</title>
+    <script src="js/theme.js"></script>
+    <link rel="stylesheet" href="css/dashboard.css" />
+    <link rel="stylesheet" href="css/settings.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+    <button class="hamburger-btn" id="hamburgerBtn" onclick="toggleSidebar()">
+        <span></span><span></span><span></span>
+    </button>
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
+    <div class="dashboard-layout">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <div class="profile">
+                <div class="avatar" id="sidebarAvatar">?</div>
+                <div>
+                    <h3 id="userName">User</h3>
+                    <span>International student</span>
+                </div>
+            </div>
+            <nav class="side-menu">
+                <p class="menu-title">Overview</p>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="expenses.html">Expenses</a>
+                <a href="income_page.html">Income</a>
+                <a href="budgets.html">Budgets</a>
+                <a href="costguide.html">Cost Guide</a>
+
+                <p class="menu-title">Account</p>
+                <a href="settings.html" class="active">Settings</a>
+                <a href="login.html" id="signOutLink">Sign out</a>
+            </nav>
+        </aside>
+
+        <!-- MAIN PANEL -->
+        <main class="main-panel">
+
+            <header class="main-header">
+                <div>
+                    <h1>Settings</h1>
+                    <p class="subtitle">Manage your profile, password, and account preferences.</p>
+                </div>
+            </header>
+
+            <!-- TABS -->
+            <div class="settings-tabs">
+                <button class="s-tab active" onclick="showTab(this,'tab-profile')">Profile</button>
+                <button class="s-tab" onclick="showTab(this,'tab-password')">Password</button>
+                <button class="s-tab" onclick="showTab(this,'tab-notifications')">Notifications</button>
+                <button class="s-tab" onclick="showTab(this,'tab-danger')">Account</button>
+            </div>
+
+            <!-- ────────────── TAB: PROFILE ────────────── -->
+            <div id="tab-profile" class="tab-panel active">
+
+                <div class="s-card">
+                    <div class="s-card-title">Personal Information</div>
+                    <div class="s-card-sub">Update your display name, email, and university details.</div>
+
+                    <div class="profile-row">
+                        <div class="avatar-upload-wrap">
+                            <div class="profile-avatar-lg" id="profileAvatar">?</div>
+                            <button class="avatar-upload-btn" onclick="document.getElementById('photoInput').click()" title="Upload photo"></button>
+                        </div>
+                        <div class="profile-meta">
+                            <strong id="profileName">Loading…</strong>
+                            <span id="profileEmail">—</span>
+                            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:6px;">
+                                <button class="btn-outline-sm" onclick="document.getElementById('photoInput').click()">Upload Photo</button>
+                                <button class="btn-outline-sm btn-outline-red" id="removePhotoBtn" onclick="removePhoto()" style="display:none;">Remove</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- hidden file input -->
+                    <input type="file" id="photoInput" accept="image/*" style="display:none;" onchange="handlePhotoUpload(event)" />
+
+                    <div class="s-field-row">
+                        <div class="s-field">
+                            <label>Full Name</label>
+                            <input type="text" id="editName" placeholder="Your full name" />
+                        </div>
+                        <div class="s-field">
+                            <label>Email Address</label>
+                            <input type="email" id="editEmail" placeholder="your@email.com" />
+                        </div>
+                    </div>
+
+                    <div class="s-field-row">
+                        <div class="s-field">
+                            <label>University / Institution</label>
+                            <input type="text" id="editUniversity" placeholder="e.g. University of Bristol" />
+                        </div>
+                        <div class="s-field">
+                            <label>Year of Study</label>
+                            <select id="editYear">
+              <option value="">Select year</option>
+              <option>Year 1</option>
+              <option>Year 2</option>
+              <option>Year 3</option>
+              <option>Postgraduate</option>
+              <option>PhD</option>
+            </select>
+                        </div>
+                    </div>
+
+                    <div class="s-field-row">
+                        <div class="s-field">
+                            <label>City</label>
+                            <select id="editCity">
+              <option value="">Select city</option>
+              <option>Bristol</option>
+              <option>London</option>
+              <option>Manchester</option>
+              <option>Birmingham</option>
+              <option>Edinburgh</option>
+              <option>Leeds</option>
+              <option>Other</option>
+            </select>
+                        </div>
+                        <div class="s-field">
+                            <label>Country of Origin</label>
+                            <select id="editCountry">
+              <option value="">Select country</option>
+              <option>China</option>
+              <option>South Korea</option>
+              <option>India</option>
+              <option>Nigeria</option>
+              <option>Thailand</option>
+              <option>Vietnam</option>
+              <option>Malaysia</option>
+              <option>United States</option>
+              <option>Other</option>
+            </select>
+                        </div>
+                    </div>
+
+                    <div class="save-bar">
+                        <button class="btn-cancel-s" onclick="loadProfileFromStorage()">Cancel</button>
+                        <button class="btn-save" onclick="saveProfile()">Save Changes</button>
+                    </div>
+                </div>
+
+            </div>
+            <!-- /tab-profile -->
+
+            <!-- ────────────── TAB: PASSWORD ────────────── -->
+            <div id="tab-password" class="tab-panel">
+
+                <div class="s-card" style="max-width:540px">
+                    <div class="s-card-title">Change Password</div>
+                    <div class="s-card-sub">Choose a strong password to keep your account secure.</div>
+
+                    <div class="s-field">
+                        <label>Current Password</label>
+                        <div class="pwd-field">
+                            <input type="password" id="currentPwd" placeholder="Enter current password" />
+                            <button class="pwd-toggle" onclick="togglePwd('currentPwd',this)">👁</button>
+                        </div>
+                    </div>
+
+                    <div class="s-field">
+                        <label>New Password</label>
+                        <div class="pwd-field">
+                            <input type="password" id="newPwd" placeholder="At least 8 characters" />
+                            <button class="pwd-toggle" onclick="togglePwd('newPwd',this)">👁</button>
+                        </div>
+                    </div>
+
+                    <div class="s-field">
+                        <label>Confirm New Password</label>
+                        <div class="pwd-field">
+                            <input type="password" id="confirmPwd" placeholder="Repeat new password" />
+                            <button class="pwd-toggle" onclick="togglePwd('confirmPwd',this)">👁</button>
+                        </div>
+                    </div>
+
+                    <!-- Password strength bar -->
+                    <div style="margin-bottom:18px">
+                        <div style="font-size:12px;font-weight:600;color:#6b7280;margin-bottom:6px">Password strength: <span id="strengthLabel">—</span></div>
+                        <div style="height:6px;background:#e5e7eb;border-radius:999px;overflow:hidden">
+                            <div id="strengthBar" style="height:100%;width:0%;border-radius:999px;transition:width 0.3s,background 0.3s;background:#e5e7eb"></div>
+                        </div>
+                    </div>
+
+                    <div class="save-bar">
+                        <button class="btn-save" onclick="changePassword()">Update Password</button>
+                    </div>
+                </div>
+
+            </div>
+            <!-- /tab-password -->
+
+            <!-- ────────────── TAB: NOTIFICATIONS ────────────── -->
+            <div id="tab-notifications" class="tab-panel">
+
+                <div class="s-card">
+                    <div class="s-card-title">Notification Preferences</div>
+                    <div class="s-card-sub">Control which alerts you receive about your finances.</div>
+
+                    <div id="notif-permission-banner" style="display:none;padding:10px 14px;border-radius:8px;font-size:13px;margin-bottom:16px;"></div>
+
+                    <div class="toggle-row">
+                        <div class="toggle-info">
+                            <strong>Budget Alerts</strong>
+                            <span>Notify when you are near your monthly spending limit</span>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="notif-budget" checked onchange="saveNotifPref('notif-budget', this.checked)" />
+                            <span class="toggle-track"></span>
+                        </label>
+                    </div>
+
+                    <div class="toggle-row">
+                        <div class="toggle-info">
+                            <strong>Overspend Warnings</strong>
+                            <span>Alert when a category exceeds its budget limit</span>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="notif-overspend" checked onchange="saveNotifPref('notif-overspend', this.checked)" />
+                            <span class="toggle-track"></span>
+                        </label>
+                    </div>
+
+                    <div class="toggle-row">
+                        <div class="toggle-info">
+                            <strong>Weekly Summary</strong>
+                            <span>Get a weekly recap of your income and spending every Monday</span>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="notif-weekly" onchange="saveNotifPref('notif-weekly', this.checked)" />
+                            <span class="toggle-track"></span>
+                        </label>
+                    </div>
+
+                    <div class="toggle-row">
+                        <div class="toggle-info">
+                            <strong>Large Transaction Alerts</strong>
+                            <span>Alert for any single expense over £100</span>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="notif-large" onchange="saveNotifPref('notif-large', this.checked)" />
+                            <span class="toggle-track"></span>
+                        </label>
+                    </div>
+
+                    <div class="toggle-row">
+                        <div class="toggle-info">
+                            <strong>UK Student Money Tips</strong>
+                            <span>Receive a weekly money-saving tip for international students</span>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="notif-tips" checked onchange="saveNotifPref('notif-tips', this.checked)" />
+                            <span class="toggle-track"></span>
+                        </label>
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- /tab-notifications -->
+
+            <!-- ────────────── TAB: ACCOUNT / DANGER ────────────── -->
+            <div id="tab-danger" class="tab-panel">
+
+                <div class="s-card">
+                    <div class="s-card-title">Account Actions</div>
+                    <div class="s-card-sub">Manage your data and account status.</div>
+
+                    <div class="danger-item">
+                        <div class="danger-info">
+                            <strong style="color:#2563eb">Export My Data</strong>
+                            <span style="color:#1e40af">Download all your transactions as a CSV file.</span>
+                        </div>
+                        <button class="btn-danger" style="background:#2563eb" onclick="exportData()">Export CSV</button>
+                    </div>
+
+                    <div class="danger-item">
+                        <div class="danger-info">
+                            <strong>Clear All Transactions</strong>
+                            <span>Permanently delete all your income and expense records.</span>
+                        </div>
+                        <button class="btn-danger" onclick="confirmClearData()">Clear Data</button>
+                    </div>
+
+                    <div class="danger-item">
+                        <div class="danger-info">
+                            <strong>Delete Account</strong>
+                            <span>Permanently remove your account and all data. This cannot be undone.</span>
+                        </div>
+                        <button class="btn-danger" onclick="confirmDeleteAccount()">Delete Account</button>
+                    </div>
+                </div>
+
+            </div>
+            <!-- /tab-danger -->
+
+        </main>
+    </div>
+
+    <!-- Toast notification -->
+    <div class="toast" id="toast"></div>
+
+    <script src="js/avatar.js"></script>
+    <script src="js/notif-bell.js"></script>
+    <script src="js/sidebar.js"></script>
+    <script src="js/settings.js"></script>
+</body>
+
+</html>

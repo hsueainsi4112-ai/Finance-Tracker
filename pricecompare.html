@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Price Comparison — Finance Tracker</title>
+    <script src="js/theme.js"></script>
+    <link rel="stylesheet" href="css/dashboard.css" />
+    <link rel="stylesheet" href="css/pricecompare.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+    <button class="hamburger-btn" id="hamburgerBtn" onclick="toggleSidebar()">
+        <span></span><span></span><span></span>
+    </button>
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
+    <div class="dashboard-layout">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <div class="profile">
+                <div class="avatar">N</div>
+                <div>
+                    <h3 id="userName">User</h3>
+                    <span>International student</span>
+                </div>
+            </div>
+            <nav class="side-menu">
+                <p class="menu-title">Overview</p>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="expenses.html">Expenses</a>
+                <a href="income_page.html">Income</a>
+                <a href="budgets.html">Budgets</a>
+                <a href="costguide.html" class="active">Cost Guide</a>
+                <p class="menu-title">Account</p>
+                <a href="settings.html">Settings</a>
+                <a href="login.html">Sign out</a>
+            </nav>
+        </aside>
+
+        <!-- MAIN -->
+        <main class="main-panel">
+
+            <!-- BACK + HEADER -->
+            <div class="pc-header">
+                <a href="costguide.html" class="back-btn">← Back to Cost Guide</a>
+                <div class="pc-title-row">
+                    <div>
+                        <h1 id="pc-item-name"></h1>
+                        <p class="subtitle" id="pc-item-unit"></p>
+                    </div>
+                    <button class="log-expense-btn" id="logExpBtn">+ Log as Expense</button>
+                </div>
+            </div>
+
+            <!-- ALL CONTENT rendered by JS into this one container -->
+            <div id="pc-root"></div>
+
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/pricedata.js"></script>
+    <script src="js/pricecompare.js"></script>
+    <script src="js/avatar.js"></script>
+    <script src="js/sidebar.js"></script>
+</body>
+
+</html>

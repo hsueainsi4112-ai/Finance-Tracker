@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finance Tracker - Expenses</title>
+    <script src="js/theme.js"></script>
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/expenses.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <button class="hamburger-btn" id="hamburgerBtn" onclick="toggleSidebar()">
+        <span></span><span></span><span></span>
+    </button>
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
+    <div class="dashboard-layout">
+
+        <!-- SIDEBAR (same as dashboard) -->
+        <aside class="sidebar">
+            <div class="profile">
+                <div class="avatar">N</div>
+                <div>
+                    <h3 id="userName">User</h3>
+                    <span>International student</span>
+                </div>
+            </div>
+
+            <nav class="side-menu">
+                <p class="menu-title">Overview</p>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="expenses.html" class="active">Expenses</a>
+                <a href="income_page.html">Income</a>
+                <a href="budgets.html">Budgets</a>
+                <a href="costguide.html">Cost Guide</a>
+
+                <p class="menu-title">Account</p>
+                <a href="settings.html">Settings</a>
+                <a href="login.html">Sign out</a>
+            </nav>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-panel">
+
+            <!-- HEADER -->
+            <header class="main-header">
+                <div>
+                    <h1>Expenses Overview</h1>
+                    <p class="subtitle">Track where your money goes as an international student.</p>
+                </div>
+
+                <div class="top-actions">
+                    <button class="primary-btn"><a href="expense.html">+ Add Expense</a></button>
+                </div>
+            </header>
+
+            <!-- CONTENT SECTION -->
+            <section class="bottom-row">
+
+                <!-- TABLE -->
+                <div class="chart-card" style="flex: 2;">
+                    <div class="section-header">
+                        <h3>All Expenses</h3>
+                    </div>
+
+                    <table class="expense-table">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Category</th>
+                                <th>Amount (£)</th>
+                                <th>Note</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="expense-table-body">
+                            <!-- JS inserts rows here -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- PIE CHART -->
+                <div class="chart-card" style="flex: 1;">
+                    <div class="section-header">
+                        <h3>Expenses by Category</h3>
+                    </div>
+                    <canvas id="expensePie"></canvas>
+                </div>
+
+            </section>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/expenses.js"></script>
+    <script src="js/avatar.js"></script>
+    <script src="js/notif-bell.js"></script>
+    <script src="js/sidebar.js"></script>
+</body>
+
+</html>

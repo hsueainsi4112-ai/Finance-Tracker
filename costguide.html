@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Finance Tracker - Cost Guide</title>
+
+    <script src="js/theme.js"></script>
+    <link rel="stylesheet" href="css/dashboard.css" />
+    <link rel="stylesheet" href="css/costguide.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+    <button class="hamburger-btn" id="hamburgerBtn" onclick="toggleSidebar()">
+        <span></span><span></span><span></span>
+    </button>
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
+    <div class="dashboard-layout">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <div class="profile">
+                <div class="avatar">N</div>
+                <div>
+                    <h3 id="userName">User</h3>
+                    <span>International student</span>
+                </div>
+            </div>
+
+            <nav class="side-menu">
+                <p class="menu-title">Overview</p>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="expenses.html">Expenses</a>
+                <a href="income_page.html">Income</a>
+                <a href="budgets.html">Budgets</a>
+                <a href="costguide.html" class="active">Cost Guide</a>
+
+                <p class="menu-title">Account</p>
+                <a href="settings.html">Settings</a>
+                <a href="login.html">Sign out</a>
+            </nav>
+        </aside>
+
+        <!-- MAIN -->
+        <main class="main-panel">
+            <header class="main-header">
+                <div>
+                    <h1>Cost Guide</h1>
+                    <p class="subtitle">UK prices for groceries, restaurants, shopping, transport and bills — sort by price.</p>
+                </div>
+                <div class="search-wrap">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" id="costSearch" placeholder="Search items..." />
+                </div>
+            </header>
+
+            <!-- AI SAVINGS INSIGHT -->
+            <div id="ai-insight-panel" class="ai-insight-panel" style="display:none;">
+                <div class="ai-insight-header">
+                    <span class="ai-insight-icon">🤖</span>
+                    <div>
+                        <strong>AI Savings Insight</strong>
+                        <span class="ai-insight-sub">Based on your spending this month</span>
+                    </div>
+                </div>
+                <ul id="ai-insight-list" class="ai-insight-list"></ul>
+            </div>
+
+            <!-- COLOUR KEY -->
+            <div class="price-key">
+                <span class="key-label">Price guide:</span>
+                <span class="key-badge" style="background:#dcfce7;color:#15803d">🟢 Cheapest</span>
+                <span class="key-badge" style="background:#fef9c3;color:#854d0e">🟡 Mid</span>
+                <span class="key-badge" style="background:#fee2e2;color:#991b1b">🔴 Expensive</span>
+            </div>
+
+            <section class="reports-stack">
+
+                <!-- AI GROCERY PLANNER -->
+                <div class="report-section grocery-planner-section">
+                    <div class="report-header">
+                        <h2>🤖 AI Weekly Grocery Planner</h2>
+                        <button class="grocery-plan-btn" onclick="toggleGroceryPlanner()">🛒 Build My Shopping List</button>
+                    </div>
+                    <p class="section-tip">💡 Enter your weekly budget and let AI build a smart shopping list — with the best vendor for every item, grouped by category, ready to print.</p>
+
+                    <div id="grocery-planner-panel" style="display:none;">
+                        <div class="gp-form-row">
+                            <div class="gp-form-group">
+                                <label>Weekly Budget (£)</label>
+                                <input type="number" id="gpBudget" min="5" max="300" value="40" placeholder="e.g. 40" />
+                            </div>
+                            <div class="gp-form-group">
+                                <label>People</label>
+                                <input type="number" id="gpPeople" min="1" max="8" value="1" />
+                            </div>
+                            <div class="gp-form-group">
+                                <label>Preferred Store</label>
+                                <select id="gpStore">
+                                    <option value="cheapest">💰 Always Cheapest</option>
+                                    <option value="Lidl">Lidl</option>
+                                    <option value="Aldi">Aldi</option>
+                                    <option value="Asda">Asda</option>
+                                    <option value="Tesco">Tesco</option>
+                                    <option value="Co-op">Co-op</option>
+                                    <option value="Sainsbury's">Sainsbury's</option>
+                                </select>
+                            </div>
+                            <div class="gp-form-group gp-form-btn-wrap">
+                                <button class="gp-gen-btn" onclick="generateGroceryList()" id="gpGenBtn">🤖 Generate List</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="grocery-list-results" style="display:none;">
+                        <div class="gp-summary-bar">
+                            <div class="gp-total-box">
+                                <span class="gp-total-label">Estimated Total</span>
+                                <span class="gp-total-amount" id="gpTotal">£0.00</span>
+                            </div>
+                            <div class="gp-summary-mid">
+                                <div id="gpBudgetStatus" class="gp-budget-status"></div>
+                                <div id="gpSavingsBadge" class="gp-savings-badge" style="display:none;"></div>
+                            </div>
+                            <div class="gp-actions">
+                                <button class="gp-print-btn" onclick="saveGroceryList()">📄 Save PDF</button>
+                                <button class="gp-log-btn" onclick="logGroceryExpense()">💾 Log as Expense</button>
+                            </div>
+                        </div>
+                        <p class="gp-tip" id="gpAITip"></p>
+                        <div id="gpChecklist" class="gp-checklist"></div>
+                        <div id="gpStoreSummary" class="gp-store-summary"></div>
+                    </div>
+                </div>
+
+                <!-- GROCERIES (supermarkets) -->
+                <div class="report-section">
+                    <div class="report-header">
+                        <h2>🛒 Groceries — Supermarkets (UK)</h2>
+                        <select id="sortGroceries">
+                            <option value="low_high">Price: Low to High</option>
+                            <option value="high_low">Price: High to Low</option>
+                        </select>
+                    </div>
+                    <div id="groceriesList" class="report-list"></div>
+                </div>
+
+                <!-- GROCERY ITEMS — PRICE COMPARE -->
+                <div class="report-section">
+                    <div class="report-header">
+                        <h2>🔎 Compare Grocery Prices</h2>
+                    </div>
+                    <p class="section-tip">
+                        💡 Click any item below to see a full price comparison across Lidl, Aldi, Asda, Tesco, Co-op, Sainsbury's, M&S and Waitrose.
+                    </p>
+                    <div id="compareItemsList" class="report-list"></div>
+                </div>
+
+                <!-- RESTAURANT -->
+                <div class="report-section">
+                    <div class="report-header">
+                        <h2>🍽️ Restaurants (Bristol)</h2>
+                        <select id="sortRestaurants">
+                            <option value="low_high">Price: Low to High</option>
+                            <option value="high_low">Price: High to Low</option>
+                        </select>
+                    </div>
+                    <div id="restaurantsList" class="report-list"></div>
+                </div>
+
+                <!-- SHOPPING -->
+                <div class="report-section">
+                    <div class="report-header">
+                        <h2>🛍️ Shopping (UK)</h2>
+                        <select id="sortShopping">
+                            <option value="low_high">Price: Low to High</option>
+                            <option value="high_low">Price: High to Low</option>
+                        </select>
+                    </div>
+                    <div id="shoppingList" class="report-list"></div>
+                </div>
+
+                <!-- TRANSPORT -->
+                <div class="report-section">
+                    <div class="report-header">
+                        <h2>🚌 Transport (Bristol)</h2>
+                        <select id="sortTransport">
+                            <option value="low_high">Price: Low to High</option>
+                            <option value="high_low">Price: High to Low</option>
+                        </select>
+                    </div>
+                    <p class="section-tip">
+                        💡 <strong>Student tip:</strong> A monthly First Bus pass (~£55) is far cheaper than buying singles daily.
+                        Always check for student railcard discounts (16–25 Railcard saves 1/3 on trains).
+                    </p>
+                    <div id="transportList" class="report-list"></div>
+                </div>
+
+                <!-- BILLS -->
+                <div class="report-section">
+                    <div class="report-header">
+                        <h2>💡 Bills &amp; Essentials (UK Students)</h2>
+                        <select id="sortBills">
+                            <option value="low_high">Price: Low to High</option>
+                            <option value="high_low">Price: High to Low</option>
+                        </select>
+                    </div>
+                    <p class="section-tip">
+                        💡 <strong>Student tip:</strong> Full-time students are <strong>exempt from Council Tax</strong> — get a certificate from your university immediately.
+                        Use giffgaff or Smarty for the cheapest SIM deals.
+                    </p>
+                    <div id="billsList" class="report-list"></div>
+                </div>
+
+            </section>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="js/pricedata.js"></script>
+    <script src="js/costguide.js"></script>
+<script src="js/avatar.js"></script>
+    <script src="js/notif-bell.js"></script>
+    <script src="js/sidebar.js"></script>
+</body>
+
+</html>

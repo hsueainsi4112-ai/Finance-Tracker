@@ -1,0 +1,573 @@
+/* ── PRICE KEY BAR ── */
+
+.price-key {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 22px;
+    flex-wrap: wrap;
+}
+
+.key-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #6b7280;
+}
+
+.key-badge {
+    font-size: 12px;
+    font-weight: 700;
+    padding: 5px 12px;
+    border-radius: 999px;
+}
+
+
+/* ── STACK OF SECTIONS ── */
+
+.reports-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.report-section {
+    background: transparent;
+}
+
+.report-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.report-header h2 {
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.report-header select {
+    border: 1px solid #e5e7eb;
+    background: #fff;
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-family: inherit;
+    cursor: pointer;
+    outline: none;
+}
+
+
+/* ── STUDENT TIP BOX ── */
+
+.section-tip {
+    background: #f0fdf4;
+    border: 1.5px solid #bbf7d0;
+    border-radius: 10px;
+    padding: 12px 16px;
+    font-size: 13px;
+    color: #166534;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+
+/* ── LIST CONTAINER ── */
+
+.report-list {
+    background: #fff;
+    border-radius: 14px;
+    padding: 14px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+
+/* ── EACH ROW ── */
+
+.report-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #f3f4f6;
+    padding: 10px 14px;
+    border-radius: 10px;
+    transition: background 0.12s;
+}
+
+.report-item:hover {
+    background: #fafafa;
+}
+
+.item-left {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.item-name {
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.item-note {
+    font-size: 12px;
+    color: #6b7280;
+}
+
+
+/* ── PRICE TAG BADGE ── */
+
+.item-tag {
+    font-size: 12px;
+    font-weight: 700;
+    padding: 5px 12px;
+    border-radius: 999px;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+/* ── ITEM RIGHT (tag + log btn) ── */
+.item-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+    margin-left: 12px;
+}
+
+/* ── LOG EXPENSE BUTTON ── */
+.log-btn {
+    background: #7b2eff;
+    color: #fff;
+    border: none;
+    padding: 5px 12px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+    white-space: nowrap;
+    transition: background 0.15s, transform 0.15s;
+}
+.log-btn:hover { background: #6420d4; transform: translateY(-1px); }
+
+/* ── SEARCH BAR ── */
+.search-wrap {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #fff;
+    border: 1.5px solid #e5e7eb;
+    border-radius: 999px;
+    padding: 8px 16px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    min-width: 220px;
+}
+
+.search-icon { font-size: 14px; }
+
+.search-wrap input {
+    border: none;
+    outline: none;
+    font-size: 13px;
+    font-family: inherit;
+    background: transparent;
+    color: #111827;
+    width: 100%;
+}
+
+.search-wrap input::placeholder { color: #9ca3af; }
+
+/* ── AI SAVINGS INSIGHT PANEL ── */
+.ai-insight-panel {
+    background: linear-gradient(135deg, #faf5ff, #ede9fe);
+    border: 1.5px solid rgba(123, 46, 255, 0.2);
+    border-radius: 14px;
+    padding: 16px 20px;
+    margin-bottom: 20px;
+}
+
+.ai-insight-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.ai-insight-icon {
+    font-size: 22px;
+    background: #fff;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+}
+
+.ai-insight-header strong { font-size: 14px; font-weight: 700; color: #7b2eff; display: block; }
+.ai-insight-sub { font-size: 11px; color: #6b7280; }
+
+.ai-insight-list {
+    margin: 0;
+    padding-left: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.ai-insight-list li { font-size: 13px; color: #374151; line-height: 1.5; }
+
+/* ── NO RESULTS ── */
+.no-results { padding: 16px; text-align: center; color: #9ca3af; font-size: 13px; }
+
+/* ── CLICKABLE ITEM WITH COMPARISON ── */
+.has-compare { cursor: pointer; }
+.has-compare:hover { background: #f5f3ff !important; border-color: rgba(123,46,255,0.2) !important; }
+
+.compare-hint {
+    font-size: 11px;
+    font-weight: 600;
+    color: #7b2eff;
+    margin-left: 8px;
+    opacity: 0.75;
+}
+.has-compare:hover .compare-hint { opacity: 1; }
+
+/* ── PRICE COMPARISON MODAL OVERLAY ── */
+.compare-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    padding: 20px;
+}
+
+.compare-modal {
+    background: #fff;
+    border-radius: 20px;
+    padding: 28px;
+    width: 100%;
+    max-width: 580px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.compare-modal-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.compare-modal-header h3 {
+    font-size: 18px;
+    font-weight: 800;
+    color: #111827;
+    margin: 0;
+}
+
+.compare-unit {
+    font-size: 12px;
+    color: #6b7280;
+    margin: 4px 0 0;
+}
+
+.compare-close-btn {
+    background: #f3f4f6;
+    border: none;
+    font-size: 16px;
+    color: #6b7280;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: background 0.15s, color 0.15s;
+}
+.compare-close-btn:hover { background: #e5e7eb; color: #111827; }
+
+.compare-best-buy {
+    background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+    border: 1.5px solid #86efac;
+    border-radius: 10px;
+    padding: 12px 16px;
+    font-size: 13px;
+    color: #166534;
+    line-height: 1.5;
+}
+
+.compare-chart-wrap {
+    height: 280px;
+    position: relative;
+}
+/* ── AI GROCERY PLANNER ── */
+
+.grocery-planner-section {
+    background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
+    border: 1.5px solid #86efac;
+    border-radius: 14px;
+    padding: 22px 24px;
+}
+
+.grocery-plan-btn {
+    background: linear-gradient(135deg, #16a34a, #15803d);
+    color: #fff;
+    border: none;
+    border-radius: 999px;
+    padding: 10px 22px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    white-space: nowrap;
+}
+.grocery-plan-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(22,163,74,0.4); }
+
+/* Form */
+.gp-form-row {
+    display: flex;
+    gap: 14px;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    background: #fff;
+    border-radius: 12px;
+    padding: 18px 20px;
+    margin-top: 14px;
+    border: 1px solid #d1fae5;
+}
+.gp-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+    min-width: 130px;
+}
+.gp-form-group label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #6b7280;
+}
+.gp-form-group input,
+.gp-form-group select {
+    padding: 10px 12px;
+    border: 1.5px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 14px;
+    background: #f9fafb;
+    color: #111827;
+    outline: none;
+    transition: border-color 0.2s;
+}
+.gp-form-group input:focus,
+.gp-form-group select:focus { border-color: #16a34a; }
+.gp-form-btn-wrap { justify-content: flex-end; }
+
+.gp-gen-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, #7b2eff, #5b21b6);
+    color: #fff;
+    border: none;
+    border-radius: 999px;
+    padding: 11px 22px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+    box-shadow: 0 4px 14px rgba(123,46,255,0.35);
+    transition: transform 0.2s, box-shadow 0.2s, opacity 0.15s;
+}
+.gp-gen-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(123,46,255,0.45); }
+.gp-gen-btn:disabled { opacity: 0.6; cursor: default; transform: none; box-shadow: none; }
+
+/* Results */
+.gp-summary-bar {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: #fff;
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-top: 18px;
+    border: 1px solid #d1fae5;
+    flex-wrap: wrap;
+}
+.gp-total-box {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+.gp-total-label { font-size: 11px; font-weight: 600; color: #6b7280; text-transform: uppercase; letter-spacing: 0.05em; }
+.gp-total-amount { font-size: 26px; font-weight: 800; color: #16a34a; }
+
+.gp-summary-mid { display: flex; flex-direction: column; gap: 6px; flex: 1; }
+.gp-budget-status { font-size: 13px; }
+.gp-status-ok   { color: #15803d; font-weight: 600; }
+.gp-status-over { color: #dc2626; font-weight: 600; }
+
+.gp-savings-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: #fef9c3;
+    border: 1px solid #fde68a;
+    color: #854d0e;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 999px;
+    width: fit-content;
+}
+
+.gp-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-left: auto; }
+.gp-print-btn, .gp-log-btn {
+    border: none;
+    border-radius: 8px;
+    padding: 9px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.15s;
+}
+.gp-print-btn { background: #f3f4f6; color: #374151; }
+.gp-print-btn:hover { background: #e5e7eb; }
+.gp-log-btn   { background: #7b2eff; color: #fff; }
+.gp-log-btn:hover { opacity: 0.85; }
+
+.gp-tip {
+    font-size: 13px;
+    color: #374151;
+    background: #fefce8;
+    border: 1px solid #fde68a;
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin-top: 12px;
+    line-height: 1.5;
+}
+
+/* Checklist */
+.gp-checklist {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin-top: 14px;
+}
+.gp-category {
+    background: #fff;
+    border-radius: 10px;
+    padding: 14px 16px;
+    border: 1px solid #e5e7eb;
+}
+.gp-cat-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #374151;
+    margin: 0 0 10px 0;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #f3f4f6;
+}
+.gp-check-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 8px;
+    border-radius: 6px;
+    font-size: 13px;
+}
+.gp-check-row:nth-child(even) { background: #f9fafb; }
+.gp-item-name { flex: 1; color: #111827; }
+.gp-store-badge {
+    font-size: 10px;
+    font-weight: 700;
+    background: #dbeafe;
+    color: #1d4ed8;
+    padding: 2px 7px;
+    border-radius: 999px;
+    white-space: nowrap;
+}
+.gp-item-price { font-size: 12px; font-weight: 700; color: #374151; min-width: 42px; text-align: right; }
+
+/* Store summary */
+.gp-store-summary {
+    background: #fff;
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-top: 14px;
+    border: 1px solid #e5e7eb;
+}
+.gp-store-title { font-size: 13px; font-weight: 700; color: #374151; margin: 0 0 10px 0; }
+.gp-store-pills { display: flex; gap: 10px; flex-wrap: wrap; }
+.gp-store-pill {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #f3f4f6;
+    border-radius: 10px;
+    padding: 8px 14px;
+    min-width: 80px;
+    font-size: 12px;
+}
+.gp-store-pill b { font-size: 13px; color: #111827; }
+.gp-store-pill span { color: #16a34a; font-weight: 700; margin-top: 2px; }
+
+/* Dark mode */
+[data-theme="dark"] .grocery-planner-section { background: #0d2818; border-color: rgba(22,163,74,0.3); }
+[data-theme="dark"] .gp-form-row { background: #1e293b; border-color: rgba(22,163,74,0.2); }
+[data-theme="dark"] .gp-form-group label { color: #94a3b8; }
+[data-theme="dark"] .gp-form-group input,
+[data-theme="dark"] .gp-form-group select { background: #0f172a; color: #f1f5f9; border-color: #334155; }
+[data-theme="dark"] .gp-summary-bar { background: #1e293b; border-color: rgba(22,163,74,0.2); }
+[data-theme="dark"] .gp-tip { background: #1c1a07; border-color: #78350f; color: #fde68a; }
+[data-theme="dark"] .gp-savings-badge { background: #1c1400; border-color: #78350f; color: #fde68a; }
+[data-theme="dark"] .gp-category { background: #1e293b; border-color: #334155; }
+[data-theme="dark"] .gp-cat-title { color: #e2e8f0; border-color: #334155; }
+[data-theme="dark"] .gp-check-row:nth-child(even) { background: #0f172a; }
+[data-theme="dark"] .gp-item-name { color: #f1f5f9; }
+[data-theme="dark"] .gp-store-badge { background: #1e3a5f; color: #93c5fd; }
+[data-theme="dark"] .gp-item-price { color: #cbd5e1; }
+[data-theme="dark"] .gp-print-btn { background: #334155; color: #e2e8f0; }
+[data-theme="dark"] .gp-print-btn:hover { background: #475569; }
+[data-theme="dark"] .gp-store-summary { background: #1e293b; border-color: #334155; }
+[data-theme="dark"] .gp-store-title { color: #e2e8f0; }
+[data-theme="dark"] .gp-store-pill { background: #0f172a; }
+[data-theme="dark"] .gp-store-pill b { color: #f1f5f9; }
+
+/* Print styles */
+@media print {
+    .sidebar, .main-header, .price-key, .report-section:not(.grocery-planner-section),
+    .grocery-plan-btn, .gp-form-row, .gp-tip, .gp-print-btn, .gp-log-btn,
+    .gp-budget-status, .ai-insight-panel { display: none !important; }
+    .main-panel { margin-left: 0 !important; padding: 0 !important; }
+    .grocery-planner-section { border: none; background: none; padding: 0; }
+    .gp-checklist { grid-template-columns: repeat(2, 1fr); }
+    .gp-check-row.ticked { display: none; }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .gp-checklist { grid-template-columns: 1fr; }
+    .gp-form-row { flex-direction: column; }
+    .gp-summary-bar { flex-direction: column; align-items: flex-start; }
+    .gp-actions { width: 100%; }
+    .gp-print-btn, .gp-log-btn { flex: 1; text-align: center; }
+}
